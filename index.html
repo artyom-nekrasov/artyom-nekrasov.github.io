@@ -99,7 +99,11 @@ tbody tr{transition:background .2s,opacity .3s}
 tbody tr:hover{background:#FAF6FF}
 tbody tr.dim{opacity:.25}
 tr:last-child td{border-bottom:0}
-td:first-child{font-weight:700;width:20%}
+td:first-child{font-weight:700;width:24%}
+td .h{display:block;font:500 .74rem/1.3 var(--f-mono);color:var(--accent);text-decoration:none;margin-top:3px;word-break:break-all}
+td .h:hover{text-decoration:underline}
+td.num{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.num span{display:block;font-weight:400;font-size:.78rem;color:var(--muted);white-space:normal}
 td q{font-style:italic;quotes:"«" "»"}
 .trainer{background:var(--card);border-radius:16px;display:grid;grid-template-columns:1.1fr .9fr;overflow:hidden;min-height:470px}
 .trainer>*{min-width:0}
@@ -246,31 +250,39 @@ footer .copy small{color:var(--lime)}
 <section aria-labelledby="map-h">
   <div class="head">
     <div class="label">1 · Карта площадок</div>
-    <h2 id="map-h">Где живёт аудитория Право.Консультанта</h2>
-    <p class="muted">Правовые вопросы задают не только юристы. Их чаще задают в чатах дома, аренды, бухгалтеров и автомобилистов. Ниже типы площадок, с которых я бы начал. Конкретные чаты с размером и правилами соберу в первые две недели. Отфильтруйте по тону:</p>
+    <h2 id="map-h">15 реальных площадок для Право.Консультанта</h2>
+    <p class="muted">Правовые вопросы задают не только юристы, а бухгалтеры, кадровики, самозанятые, водители и мамы. Я нашёл живые чаты и сообщества и сверил размер каждого по публичной странице 25 ноября 2026. Правила каждого чата проверю при вступлении.</p>
   </div>
-  <div class="filters" role="group" aria-label="Фильтр по тону">
+  <div class="filters" role="group" aria-label="Фильтр по аудитории">
     <button type="button" data-f="all" aria-pressed="true">Все</button>
-    <button type="button" data-f="ok" aria-pressed="false">Польза</button>
-    <button type="button" data-f="fun" aria-pressed="false">Юмор</button>
-    <button type="button" data-f="law" aria-pressed="false">Коллега / сверка</button>
+    <button type="button" data-f="law" aria-pressed="false">Юристы</button>
+    <button type="button" data-f="biz" aria-pressed="false">Бухгалтеры, HR, бизнес</button>
+    <button type="button" data-f="life" aria-pressed="false">Бытовые вопросы</button>
+    <button type="button" data-f="own" aria-pressed="false">Партнёры и свои</button>
   </div>
   <div class="tbl">
     <table>
-      <thead><tr><th>Площадка</th><th>Кто там</th><th>Типичный вопрос</th><th>Зачем бренду</th><th>Тон</th></tr></thead>
+      <thead><tr><th>Площадка</th><th>Размер</th><th>Кто там и о чём</th><th>Как заходить</th></tr></thead>
       <tbody id="map">
-        <tr data-t="law"><td>Профессиональные юридические чаты в Telegram</td><td>Юристы, помощники, инхаус</td><td><q>Есть свежая практика по…?</q>, <q>Скиньте шаблон</q></td><td>Показать AI-помощника как инструмент, который экономит время. Ядро B2B-аудитории.</td><td><span class="chip c-law">коллега</span></td></tr>
-        <tr data-t="ok fun"><td>Паблики ЖКХ и домовые чаты (VK, Telegram)</td><td>Собственники, старшие по дому</td><td><q>Затопили соседи</q>, <q>УК завысила счёт</q></td><td>Массовый поток вопросов, на который ассистент отвечает лучше форума</td><td><span class="chip c-ok">польза</span> <span class="chip c-fun">юмор</span></td></tr>
-        <tr data-t="ok"><td>Чаты аренды жилья</td><td>Арендаторы и собственники</td><td><q>Не возвращают залог</q>, <q>Что писать в договор</q></td><td>Моя ниша: знаю эту аудиторию по Keys To Moscow</td><td><span class="chip c-ok">польза</span></td></tr>
-        <tr data-t="law"><td>Сообщества бухгалтеров и ИП</td><td>Бухгалтеры, предприниматели</td><td><q>Штраф за просрочку</q>, <q>Как расторгнуть договор</q></td><td>Платёжеспособная аудитория с частыми повторяющимися вопросами</td><td><span class="chip c-law">коллега</span></td></tr>
-        <tr data-t="law"><td>Кадровики и HR</td><td>HR, руководители</td><td><q>Можно ли уволить на испытательном?</q></td><td>Вопросы по ТК РФ: точные ответы со ссылкой на статью</td><td><span class="chip c-law">сверка</span></td></tr>
-        <tr data-t="ok fun"><td>Автомобильные сообщества</td><td>Водители</td><td><q>ДТП, страховая занижает выплату</q></td><td>Эмоциональные вопросы, после которых ответы сохраняют</td><td><span class="chip c-ok">польза</span> <span class="chip c-fun">юмор</span></td></tr>
-        <tr data-t="law"><td>Семейные и родительские чаты</td><td>Родители, супруги</td><td><q>Алименты</q>, <q>Раздел имущества</q></td><td>Высокий спрос, но заходить только деликатно и после проверки юристом</td><td><span class="chip c-law">сверка</span></td></tr>
-        <tr data-t="fun ok"><td>Комментарии в медиа: vc.ru, Пикабу, Т—Ж</td><td>Широкая аудитория</td><td>Обсуждения правовых новостей и личных историй</td><td>Охват и репутация экспертного голоса</td><td><span class="chip c-fun">юмор</span> <span class="chip c-ok">польза</span></td></tr>
-        <tr data-t="ok"><td>Свои площадки бренда</td><td>Подписчики</td><td>Рубрики: «Вопрос из чата», «Миф или норма», «Отвечает AI, проверил юрист»</td><td>Собирать лучшие ответы из внешних площадок и превращать их в контент. Инфоповод под рукой: шоу «ТыЖюрист», выпуски можно обсуждать во внешних чатах с вопросом «а как бы ответили вы?»</td><td><span class="chip c-ok">польза</span></td></tr>
+        <tr data-t="law"><td>Юристы России │ Чат<a class="h" href="https://t.me/jurrussia" target="_blank" rel="noopener">@jurrussia</a></td><td class="num">6 783<span>225 онлайн</span></td><td>Юристы и клиенты, обмен опытом, вопросы «гарантированно не останутся без ответа»</td><td><span class="chip c-law">коллега</span> Ответы по делу от лица продукта: как AI экономит время на рутине</td></tr>
+        <tr data-t="law"><td>Юриспруденция<a class="h" href="https://t.me/jurisprudence" target="_blank" rel="noopener">@jurisprudence</a></td><td class="num">1 505<span>92 онлайн</span></td><td>Чат юристов для юристов, есть хэштеги #вопрос и #сотрудничество</td><td><span class="chip c-law">коллега</span> Отвечать в ветках #вопрос, без ссылок в первом касании</td></tr>
+        <tr data-t="law"><td>Геймдев: правовые вопросы<a class="h" href="https://t.me/legalgd" target="_blank" rel="noopener">@legalgd</a></td><td class="num">4 467<span>830 онлайн</span></td><td>Договоры, IP и лицензии в игровой индустрии. «Строго без флуда»</td><td><span class="chip c-law">коллега</span> Самый живой чат в списке. Только точные ответы со статьёй</td></tr>
+        <tr data-t="law life"><td>Лига юристов, Пикабу<a class="h" href="https://pikabu.ru/community/justice" target="_blank" rel="noopener">pikabu.ru/community/justice</a></td><td class="num">40 389<span>подписчиков, 40&nbsp;944 поста</span></td><td>Истории из практики, вопросы о выборе юриста, юмор</td><td><span class="chip c-fun">юмор</span> Реклама своих услуг запрещена. Экспертные комментарии и посты-разборы без ссылок</td></tr>
+        <tr data-t="biz"><td>Нетипичный бухгалтер — ЧАТ<a class="h" href="https://t.me/netipichniy_buhgalter" target="_blank" rel="noopener">@netipichniy_buhgalter</a></td><td class="num">14 061<span>245 онлайн</span></td><td>Бухгалтеры решают вопросы коллективно. У канала 77&nbsp;799 подписчиков и свой бот «ИИ-главбух»</td><td><span class="chip c-law">коллега</span> Не конкурировать с их ботом, а предложить админам совместную рубрику по договорам</td></tr>
+        <tr data-t="biz"><td>Клуб эйчаров │ HR чат<a class="h" href="https://t.me/hr_only" target="_blank" rel="noopener">@hr_only</a></td><td class="num">6 855<span>322 онлайн</span></td><td>HR, рекрутеры и кадровики: найм, увольнения, ТК РФ</td><td><span class="chip c-law">сверка</span> Трудовые вопросы со ссылкой на ТК, сложные случаи через юриста</td></tr>
+        <tr data-t="biz"><td>Чат Кадровика<a class="h" href="https://t.me/kadrovikuchat" target="_blank" rel="noopener">@kadrovikuchat</a></td><td class="num">1 327<span>26 онлайн, у канала 44&nbsp;847</span></td><td>Чат при канале «Кадровику»: взаимопомощь, кадровый учёт</td><td><span class="chip c-ok">польза</span> Чат тихий, поэтому основной заход через нативную интеграцию в канале с маркировкой</td></tr>
+        <tr data-t="biz"><td>Беседа Самозанятые.рф<a class="h" href="https://t.me/selfworkchat" target="_blank" rel="noopener">@selfworkchat</a></td><td class="num">7 959<span>281 онлайн</span></td><td>Эксперты и участники разбирают законы о самозанятости. У канала 30&nbsp;668</td><td><span class="chip c-ok">польза</span> Договоры с заказчиками, претензии, налоги: частые повторяющиеся вопросы</td></tr>
+        <tr data-t="biz life"><td>Финдозор чат<a class="h" href="https://t.me/findozorchat" target="_blank" rel="noopener">@findozorchat</a></td><td class="num">9 918<span>410 онлайн</span></td><td>Долги, кредиты, банкротство физлиц</td><td><span class="chip c-law">сверка</span> Темы дорогих ошибок, поэтому только после проверки юристом</td></tr>
+        <tr data-t="life"><td>Чат Такси МОСКВА │ РОССИЯ<a class="h" href="https://t.me/taximoskvarussia" target="_blank" rel="noopener">@taximoskvarussia</a></td><td class="num">10 352<span>152 онлайн</span></td><td>Водители такси: штрафы, ДТП, самозанятость, споры с агрегаторами</td><td><span class="chip c-fun">юмор</span> <span class="chip c-ok">польза</span> Короткие ответы на языке чата, без канцелярита</td></tr>
+        <tr data-t="life"><td>Чат дальнобойщиков<a class="h" href="https://t.me/truckersclub" target="_blank" rel="noopener">@truckersclub</a></td><td class="num">7 920<span>152 онлайн</span></td><td>Водители грузовиков и логисты: штрафы, трудовые споры, ДТП</td><td><span class="chip c-ok">польза</span> Правила в закрепе, есть прайс на рекламу. Сначала польза, интеграция потом</td></tr>
+        <tr data-t="life"><td>Мамочки Москвы<a class="h" href="https://t.me/moscowmommies" target="_blank" rel="noopener">@moscowmommies</a></td><td class="num">3 485<span>161 онлайн</span></td><td>Мамы Москвы: «спросить о чём угодно». Алименты, пособия, садики, раздел имущества</td><td><span class="chip c-law">сверка</span> Только деликатно и по прямому вопросу. Семейные темы через юриста</td></tr>
+        <tr data-t="own life"><td>Keys To Moscow │ Аренда жилья<a class="h" href="https://t.me/keystomoscow" target="_blank" rel="noopener">@keystomoscow</a></td><td class="num">42 844<span>подписчиков</span></td><td>Мой канал: арендаторы и собственники Москвы. Залоги, договоры, споры при выезде</td><td><span class="chip c-ok">польза</span> Пилот в первую неделю: рубрика о правах арендатора, замер переходов по UTM</td></tr>
+        <tr data-t="own life"><td>Аренда квартиры Москва<a class="h" href="https://t.me/arendamsc" target="_blank" rel="noopener">@arendamsc</a></td><td class="num">16 484<span>подписчиков</span></td><td>Объявления без агентов, «строгая модерация»</td><td><span class="chip c-ok">польза</span> Партнёрская рубрика «что проверить в договоре» рядом с объявлениями</td></tr>
+        <tr data-t="own life"><td>ЖКХ, блог юриста<a class="h" href="https://t.me/gkhvsem" target="_blank" rel="noopener">@gkhvsem</a></td><td class="num">40 183<span>подписчиков</span></td><td>Право в ЖКХ: практика судов, новости для собственников, УК и ТСЖ</td><td><span class="chip c-law">коллега</span> Коллаборация с автором-юристом вместо холодного захода в домовые чаты</td></tr>
       </tbody>
     </table>
   </div>
+  <p class="muted" style="font-size:.85rem">Размеры сверены по публичным страницам t.me и Пикабу 25.11.2026, онлайн меняется в течение дня. Интеграции в каналах — с маркировкой через ОРД: эту часть я и так веду сам.</p>
 </section>
 
 <section aria-labelledby="tr-h" id="trainer">
@@ -395,7 +407,7 @@ footer .copy small{color:var(--lime)}
       <div class="label">Дни 1–30</div>
       <h3>Разведка и правила</h3>
       <ul>
-        <li>Карта из 30–50 реальных площадок: размер, правила, тон</li>
+        <li>Расширить карту с 15 до 50 площадок, изучить правила каждой</li>
         <li>Регламент тона и согласования с юристами</li>
         <li>Ручной мониторинг 15–20 площадок, первые ответы</li>
         <li>UTM-схема и критерий MQL вместе с продуктом</li>
@@ -425,7 +437,7 @@ footer .copy small{color:var(--lime)}
 
 <footer>
   <h2>Обсудим?</h2>
-  <p>Готов показать полную карту площадок с реальными чатами и пройти тестовое задание.</p>
+  <p>Готов расширить карту до 50 площадок, запустить пилот на своём канале и пройти тестовое задание.</p>
   <div class="row">
     <button class="copy" data-copy="@artyom_nekrasov" type="button">tg: @artyom_nekrasov <small>копировать</small></button>
     <button class="copy" data-copy="artem.nekras@mail.ru" type="button">artem.nekras@mail.ru <small>копировать</small></button>
