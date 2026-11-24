@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Артём Некрасов — Social &amp; Community Manager: карта площадок, тренажёр ответов, мониторинг и план на 90 дней.">
+<title>Артём Некрасов × ПравоТех</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --paper:#F5F5F5; --card:#FFFFFF; --ink:#0D0628; --muted:#68647A; --line:#E4E1EC;
+  --accent:#8C26EA; --accent-deep:#6A12BE; --accent-soft:#F1E6FD; --lime:#EEFF2D; --bubble:#F1F0F4;
+  --ok:#1D7A4C; --ok-soft:#E1F4E9; --warm:#8A5A00; --warm-soft:#FBF4C2; --red:#B4233C; --red-soft:#FBE6EA; --mute-soft:#ECEBF0;
+  --f-body:"Open Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:16px/1.6 var(--f-body);overflow-x:hidden;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:960px;margin:0 auto;padding-block:40px 72px;display:grid;gap:88px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.12}
+h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:800;letter-spacing:-.025em}
+h1 .par{color:var(--accent);font-weight:600;display:inline-block}
+h2{font-size:clamp(1.45rem,3.2vw,2rem);font-weight:800;letter-spacing:-.015em}
+h3{font-size:1rem;font-weight:700}
+p{margin:0;max-width:65ch}
+mark{background:var(--lime);color:var(--ink);padding:0 4px;border-radius:4px}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+button{font:inherit;color:inherit;cursor:pointer}
+.label{font:500 .74rem/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.cite{font:500 .78rem/1 var(--f-mono);background:var(--card);color:var(--accent);border:1px solid #DCC6F8;padding:2px 6px;border-radius:6px;white-space:nowrap}
+section{display:grid;gap:24px}
+.head{display:grid;gap:10px}
+.hero{position:relative;isolation:isolate;display:grid;grid-template-columns:1fr 1.05fr;gap:44px;align-items:center}
+.hero>*{min-width:0}
+.glow{position:absolute;z-index:-1;width:560px;max-width:90vw;aspect-ratio:1;border-radius:50%;left:-120px;top:-180px;
+  background:radial-gradient(closest-side,rgba(140,38,234,.30),rgba(140,38,234,0));filter:blur(10px);pointer-events:none;transition:transform .9s var(--ease)}
+.intro{display:grid;gap:20px}
+.role{font:500 .95rem/1.4 var(--f-mono);color:var(--accent)}
+.copy{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 14px;font:500 .88rem/1 var(--f-mono);transition:border-color .2s,transform .2s var(--ease)}
+.copy:hover{border-color:var(--accent);transform:translateY(-2px)}
+.copy small{font:600 .7rem/1 var(--f-body);color:var(--accent)}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border:0;border-radius:12px;padding:12px 18px;font-weight:700;text-decoration:none;transition:background .2s,transform .2s var(--ease)}
+.cta:hover{background:var(--accent-deep);transform:translateY(-2px)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chat{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 60px -28px rgba(13,6,40,.35);display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+.chat-top{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.ava{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.8rem;color:#fff;flex:none}
+.chat-top b{font-size:.92rem;display:block;line-height:1.2}
+.chat-top span{font-size:.75rem;color:var(--muted)}
+.replay{margin-left:auto;background:var(--accent-soft);color:var(--accent);border:0;border-radius:10px;padding:7px 10px;font:600 .75rem/1 var(--f-body)}
+.feed{padding:14px;display:flex;flex-direction:column;gap:8px;min-height:420px;background:linear-gradient(180deg,var(--card),#FBF9FE)}
+.m{display:flex;gap:8px;align-items:flex-end;max-width:88%;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.m .ava{width:28px;height:28px;font-size:.7rem}
+.m .b{background:var(--bubble);border-radius:14px 14px 14px 4px;padding:7px 11px;font-size:.88rem;line-height:1.45}
+.m .n{display:block;font-size:.72rem;font-weight:700;margin-bottom:1px}
+.m .t{display:block;font:400 .66rem/1 var(--f-mono);color:var(--muted);text-align:right;margin-top:3px}
+.m .q{display:block;border-left:2px solid var(--accent);padding-left:6px;margin-bottom:4px;font-size:.75rem;color:var(--muted)}
+.m.brand{align-self:flex-end;flex-direction:row-reverse}
+.m.brand .b{background:var(--accent-soft);border-radius:14px 14px 4px 14px}
+.m.brand .n{color:var(--accent)}
+.m ol{margin:4px 0;padding-left:18px}
+.m.hide{opacity:0;transform:translateY(8px) scale(.98)}
+.typing{align-self:flex-end;display:none;gap:4px;padding:10px 12px;background:var(--accent-soft);border-radius:14px 14px 4px 14px}
+.typing.on{display:inline-flex}
+.typing.left{align-self:flex-start;background:var(--bubble);border-radius:14px 14px 14px 4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.4;animation:dot 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes dot{50%{opacity:1;transform:translateY(-3px)}}
+.reacts{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.reacts span{font:500 .72rem/1 var(--f-mono);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 7px}
+.chat-bottom{border-top:1px solid var(--line);padding:10px 14px;font-size:.8rem;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.proof div{background:var(--card);border-radius:12px;padding:18px;display:grid;gap:6px;align-content:start;transition:transform .25s var(--ease),box-shadow .25s}
+.proof div:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(140,38,234,.5)}
+.proof b{font:800 2rem/1 var(--f-body);color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.proof span{font-size:.85rem;color:var(--muted);line-height:1.45}
+.chip{display:inline-block;font:500 .72rem/1 var(--f-mono);padding:5px 8px;border-radius:999px;white-space:nowrap}
+.c-ok{background:var(--ok-soft);color:var(--ok)}
+.c-fun{background:var(--warm-soft);color:var(--warm)}
+.c-law{background:var(--accent-soft);color:var(--accent)}
+.c-neg{background:var(--red-soft);color:var(--red)}
+.c-no{background:var(--mute-soft);color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:.84rem;font-weight:600;transition:all .2s}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.tbl{overflow-x:auto;border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.88rem}
+th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}
+th{font:500 .72rem/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+tbody tr{transition:background .2s,opacity .3s}
+tbody tr:hover{background:#FAF6FF}
+tbody tr.dim{opacity:.25}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700;width:20%}
+td q{font-style:italic;quotes:"«" "»"}
+.trainer{background:var(--card);border-radius:16px;display:grid;grid-template-columns:1.1fr .9fr;overflow:hidden;min-height:470px}
+.trainer>*{min-width:0}
+.t-chat{padding:18px;display:flex;flex-direction:column;gap:8px;background:linear-gradient(180deg,var(--card),#FBF9FE);border-right:1px solid var(--line)}
+.t-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+.t-side{padding:18px;display:grid;gap:14px;align-content:start}
+.opts{display:grid;gap:8px}
+.opts button{display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;background:var(--paper);border:1.5px solid transparent;border-radius:12px;padding:11px 13px;font-weight:600;font-size:.9rem;transition:all .2s var(--ease)}
+.opts button:hover:not(:disabled){border-color:var(--accent);transform:translateX(3px)}
+.opts button:disabled{cursor:default}
+.opts button.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.opts button.wrong{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.opts button.mine{border-color:var(--ok);border-style:dashed}
+.verdict{font-weight:700}
+.why{font-size:.88rem;color:var(--muted)}
+.t-nav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:4px}
+.dots{display:flex;gap:6px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:all .3s}
+.dots i.on{background:var(--accent);width:22px;border-radius:4px}
+.ghost{background:transparent;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-weight:600;font-size:.85rem}
+.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.score{font:500 .8rem/1 var(--f-mono);color:var(--muted)}
+figure{margin:0;display:grid;gap:12px}
+.dia{overflow-x:auto;background:var(--card);border-radius:12px;padding:16px;color:var(--ink)}
+.dia svg{display:block;width:100%;min-width:760px;height:auto}
+.flow{stroke-dasharray:6 6;animation:flow 1.2s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-12}}
+.node{cursor:pointer}
+.node rect{transition:stroke-width .2s,filter .2s}
+.node:hover rect,.node.sel rect{stroke-width:2.5;filter:drop-shadow(0 6px 10px rgba(140,38,234,.25))}
+.node:focus{outline:none}
+.node:focus-visible rect{stroke:var(--accent);stroke-width:3}
+.detail{background:var(--ink);color:#fff;border-radius:12px;padding:16px 18px;display:grid;gap:4px;min-height:92px}
+.detail b{color:var(--lime);font-size:.95rem}
+.detail p{color:#E4E0F0;font-size:.9rem}
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:0;padding:0;list-style:none}
+.rules li{background:var(--card);border-radius:12px;padding:14px 16px;display:grid;gap:4px;font-size:.9rem}
+.calc{background:var(--card);border-radius:16px;padding:20px;display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}
+.calc>*{min-width:0}
+.ctrls{display:grid;gap:16px;align-content:start}
+.ctrl{display:grid;gap:6px}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-size:.86rem;font-weight:600}
+.ctrl output{font:500 .85rem/1 var(--f-mono);color:var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.funnel{display:grid;gap:10px;align-content:start}
+.fstep{display:grid;gap:4px}
+.fstep .top{display:flex;justify-content:space-between;gap:8px;font-size:.84rem}
+.fstep .top b{font-weight:700}
+.track{height:40px;background:var(--paper);border-radius:12px;overflow:hidden}
+.fill{height:100%;background:var(--accent);border-radius:12px;display:flex;align-items:center;padding-inline:12px;color:#fff;font:500 .88rem/1 var(--f-mono);white-space:nowrap;min-width:fit-content;transition:width .6s var(--ease)}
+.fstep:last-child .fill{background:var(--lime);color:var(--ink)}
+.note{background:var(--ink);color:#fff;border-radius:12px;padding:18px 20px;display:grid;gap:6px}
+.note .label{color:#B9B3CC}
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.phase{background:var(--card);border-radius:12px;padding:18px;display:grid;gap:10px;align-content:start;position:relative;overflow:hidden;transition:transform .25s var(--ease)}
+.phase::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--accent);transform-origin:left;transform:scaleX(.25);transition:transform .5s var(--ease)}
+.phase:hover{transform:translateY(-4px)}
+.phase:hover::before{transform:scaleX(1)}
+.phase ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:.92rem}
+footer{background:var(--ink);color:#fff;border-radius:16px;padding:32px clamp(18px,4vw,40px);display:grid;gap:16px;position:relative;overflow:hidden;isolation:isolate}
+footer::after{content:"";position:absolute;z-index:-1;right:-120px;bottom:-200px;width:420px;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(140,38,234,.6),rgba(140,38,234,0))}
+footer h2{color:#fff}
+footer p{color:#D9D4E8}
+footer .copy{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff}
+footer .copy small{color:var(--lime)}
+.fine{font-size:.78rem;color:#A9A3BF}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--ink);color:#fff;border-radius:12px;padding:10px 16px;font-size:.88rem;font-weight:600;transition:all .3s var(--ease);pointer-events:none;z-index:20}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:no-preference){
+  .intro>*{animation:rise .7s var(--ease) both}
+  .intro>*:nth-child(2){animation-delay:.08s}.intro>*:nth-child(3){animation-delay:.16s}.intro>*:nth-child(4){animation-delay:.24s}.intro>*:nth-child(5){animation-delay:.32s}
+  .chat{animation:rise .8s var(--ease) .15s both}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}}
+  h1 .par{animation:wob 3.2s ease-in-out 1.2s infinite}
+  @keyframes wob{0%,100%{transform:none}50%{transform:translateY(-3px)}}
+}
+@media (prefers-reduced-motion:reduce){
+  .flow,.typing i,h1 .par{animation:none!important}
+  *{transition-duration:.01ms!important}
+}
+@media (max-width:820px){
+  .wrap{gap:64px;padding-block:24px 56px}
+  .hero,.trainer,.calc,.plan,.rules{grid-template-columns:1fr}
+  .t-chat{border-right:0;border-bottom:1px solid var(--line)}
+  .proof{grid-template-columns:1fr 1fr}
+  .feed{min-height:0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero" id="hero">
+  <div class="glow" id="glow"></div>
+  <div class="intro">
+    <div class="label">Отклик на вакансию · Social &amp; Community Manager</div>
+    <h1>Артём Некрасов <span class="par">(комьюнити)</span></h1>
+    <p class="role">Цифровой юрист, который собирает аудитории</p>
+    <p>Я магистр «Цифровой юрист» Финансового университета и 2,5 года строю сообщества в Telegram и соцсетях. Собрал <mark>60 тысяч пользователей</mark> в своей сети каналов без рекламного бюджета. Справа пример того, как Право.Консультант может зайти в чужой чат, а ниже можно самому попробовать принять такие решения.</p>
+    <div class="row">
+      <a class="cta" href="#trainer">Пройти тренажёр ↓</a>
+      <button class="copy" data-copy="@artyom_nekrasov" type="button">tg: @artyom_nekrasov <small>копировать</small></button>
+      <button class="copy" data-copy="artem.nekras@mail.ru" type="button">artem.nekras@mail.ru <small>копировать</small></button>
+    </div>
+  </div>
+
+  <div class="chat" aria-label="Пример переписки: в чате арендаторов спрашивают про невозвращённый залог, Право.Консультант отвечает со ссылкой на статью 381.1 ГК РФ">
+    <div class="chat-top">
+      <div class="ava" style="background:#5B8DEF">СБ</div>
+      <div><b>Сниму без комиссии · Москва</b><span>4 812 участников · пример</span></div>
+      <button class="replay" id="replay" type="button">↻ ещё раз</button>
+    </div>
+    <div class="feed" id="feed">
+      <div class="m"><div class="ava" style="background:#E0679A">М</div><div class="b"><span class="n" style="color:#C2427A">Марина</span>Ребят, кто сталкивался?? Съехала месяц назад, хозяйка морозится и не отдаёт залог 60к 😤 Говорит, оставит себе на косметический ремонт. Я там всё до блеска отмыла!<span class="t">21:04</span></div></div>
+      <div class="m"><div class="ava" style="background:#4CA27A">О</div><div class="b"><span class="n" style="color:#2E7D59">Олег</span>классика. забудь, никто не возвращает 🙃<span class="t">21:05</span></div></div>
+      <div class="m"><div class="ava" style="background:#E3A43B">К</div><div class="b"><span class="n" style="color:#A86B00">Катя</span>у меня так же было, плюнула и забыла(<span class="t">21:05</span></div></div>
+      <div class="m brand"><div class="ava" style="background:var(--accent)">П</div><div class="b"><span class="n">Право.Консультант</span>Марина, не плюйте 🙂 Залог по договору найма — это обеспечительный платёж <span class="cite">ст. 381.1 ГК</span>. Если долгов и порчи нет, его обязаны вернуть.
+        <ol><li>Найдите акт приёма-передачи или фото при выезде</li><li>Отправьте хозяйке письменную претензию со сроком</li><li>Не вернёт — суд, плюс проценты за просрочку <span class="cite">ст. 395 ГК</span></li></ol>
+        Скиньте договор в бот, соберём претензию за пару минут<span class="t">21:07</span></div></div>
+      <div class="m"><div class="ava" style="background:#E0679A">М</div><div class="b"><span class="n" style="color:#C2427A">Марина</span><span class="q">Право.Консультант: …если долгов и порчи нет…</span>а за косметический ремонт она разве не может удержать?<span class="t">21:08</span></div></div>
+      <div class="m brand"><div class="ava" style="background:var(--accent)">П</div><div class="b"><span class="n">Право.Консультант</span>Смотрите договор: по закону текущий ремонт на нанимателе, если в договоре не сказано иначе <span class="cite">ст. 681 ГК</span>. Но обычный износ — не повод удерживать всю сумму. Пусть хозяйка покажет, что именно нужно ремонтировать и сколько это стоит 👌<span class="t">21:08</span></div></div>
+      <div class="m"><div class="ava" style="background:#E0679A">М</div><div class="b"><span class="n" style="color:#C2427A">Марина</span>ага, в договоре ремонт на собственнике! всё, пошла писать претензию. спасибо!! 🙏<span class="t">21:09</span></div></div>
+      <div class="m"><div class="ava" style="background:#4CA27A">О</div><div class="b"><span class="n" style="color:#2E7D59">Олег</span>ок, беру свои слова обратно 😅<div class="reacts"><span>👍 31</span><span>🔥 9</span><span>😂 4</span></div><span class="t">21:10</span></div></div>
+      <div class="typing" id="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div>
+    <div class="chat-bottom"><span>Нет ссылки в лоб, есть польза в треде</span><span>→ переход в бот</span></div>
+  </div>
+</header>
+
+<section aria-labelledby="proof-h">
+  <div class="head">
+    <div class="label">Что уже сделано</div>
+    <h2 id="proof-h">Цифры из моих проектов</h2>
+  </div>
+  <div class="proof">
+    <div><b data-count="60" data-suf=" тыс.">60 тыс.</b><span>пользователей в сети каналов Keys To Moscow об аренде без комиссии</span></div>
+    <div><b data-count="43" data-suf=" тыс.">43 тыс.</b><span>подписчиков флагманского канала, все пришли органически, с нуля</span></div>
+    <div><b data-count="629">629</b><span>целевых лидов в Colife из 30,1 млн органических просмотров</span></div>
+    <div><b data-count="113" data-suf="%">113%</b><span>среднее выполнение месячного плана в Colife</span></div>
+  </div>
+  <p class="muted">Keys To Moscow вышел на чистую прибыль: CPA-партнёрство с Яндекс Арендой, платные размещения, рекламные интеграции. Договоры с рекламодателями и маркировку через ОРД веду сам, поэтому юридическую сторону бренда в соцсетях понимаю изнутри.</p>
+</section>
+
+<section aria-labelledby="map-h">
+  <div class="head">
+    <div class="label">1 · Карта площадок</div>
+    <h2 id="map-h">Где живёт аудитория Право.Консультанта</h2>
+    <p class="muted">Правовые вопросы задают не только юристы. Их чаще задают в чатах дома, аренды, бухгалтеров и автомобилистов. Ниже типы площадок, с которых я бы начал. Конкретные чаты с размером и правилами соберу в первые две недели. Отфильтруйте по тону:</p>
+  </div>
+  <div class="filters" role="group" aria-label="Фильтр по тону">
+    <button type="button" data-f="all" aria-pressed="true">Все</button>
+    <button type="button" data-f="ok" aria-pressed="false">Польза</button>
+    <button type="button" data-f="fun" aria-pressed="false">Юмор</button>
+    <button type="button" data-f="law" aria-pressed="false">Коллега / сверка</button>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Площадка</th><th>Кто там</th><th>Типичный вопрос</th><th>Зачем бренду</th><th>Тон</th></tr></thead>
+      <tbody id="map">
+        <tr data-t="law"><td>Профессиональные юридические чаты в Telegram</td><td>Юристы, помощники, инхаус</td><td><q>Есть свежая практика по…?</q>, <q>Скиньте шаблон</q></td><td>Показать AI-помощника как инструмент, который экономит время. Ядро B2B-аудитории.</td><td><span class="chip c-law">коллега</span></td></tr>
+        <tr data-t="ok fun"><td>Паблики ЖКХ и домовые чаты (VK, Telegram)</td><td>Собственники, старшие по дому</td><td><q>Затопили соседи</q>, <q>УК завысила счёт</q></td><td>Массовый поток вопросов, на который ассистент отвечает лучше форума</td><td><span class="chip c-ok">польза</span> <span class="chip c-fun">юмор</span></td></tr>
+        <tr data-t="ok"><td>Чаты аренды жилья</td><td>Арендаторы и собственники</td><td><q>Не возвращают залог</q>, <q>Что писать в договор</q></td><td>Моя ниша: знаю эту аудиторию по Keys To Moscow</td><td><span class="chip c-ok">польза</span></td></tr>
+        <tr data-t="law"><td>Сообщества бухгалтеров и ИП</td><td>Бухгалтеры, предприниматели</td><td><q>Штраф за просрочку</q>, <q>Как расторгнуть договор</q></td><td>Платёжеспособная аудитория с частыми повторяющимися вопросами</td><td><span class="chip c-law">коллега</span></td></tr>
+        <tr data-t="law"><td>Кадровики и HR</td><td>HR, руководители</td><td><q>Можно ли уволить на испытательном?</q></td><td>Вопросы по ТК РФ: точные ответы со ссылкой на статью</td><td><span class="chip c-law">сверка</span></td></tr>
+        <tr data-t="ok fun"><td>Автомобильные сообщества</td><td>Водители</td><td><q>ДТП, страховая занижает выплату</q></td><td>Эмоциональные вопросы, после которых ответы сохраняют</td><td><span class="chip c-ok">польза</span> <span class="chip c-fun">юмор</span></td></tr>
+        <tr data-t="law"><td>Семейные и родительские чаты</td><td>Родители, супруги</td><td><q>Алименты</q>, <q>Раздел имущества</q></td><td>Высокий спрос, но заходить только деликатно и после проверки юристом</td><td><span class="chip c-law">сверка</span></td></tr>
+        <tr data-t="fun ok"><td>Комментарии в медиа: vc.ru, Пикабу, Т—Ж</td><td>Широкая аудитория</td><td>Обсуждения правовых новостей и личных историй</td><td>Охват и репутация экспертного голоса</td><td><span class="chip c-fun">юмор</span> <span class="chip c-ok">польза</span></td></tr>
+        <tr data-t="ok"><td>Свои площадки бренда</td><td>Подписчики</td><td>Рубрики: «Вопрос из чата», «Миф или норма», «Отвечает AI, проверил юрист»</td><td>Собирать лучшие ответы из внешних площадок и превращать их в контент. Инфоповод под рукой: шоу «ТыЖюрист», выпуски можно обсуждать во внешних чатах с вопросом «а как бы ответили вы?»</td><td><span class="chip c-ok">польза</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="tr-h" id="trainer">
+  <div class="head">
+    <div class="label">2 · Тренажёр: как бренд заходит в разговор</div>
+    <h2 id="tr-h">Ваш ход: что бы ответил бренд?</h2>
+    <p class="muted">Пять настоящих по духу веток, примеры придуманы. Выберите реакцию, и я покажу, что выбрал бы сам и почему.</p>
+  </div>
+  <div class="trainer">
+    <div class="t-chat" id="tChat" aria-live="polite"></div>
+    <div class="t-side">
+      <div class="label" id="tStep">Ветка 1 из 5</div>
+      <div class="opts" id="tOpts">
+        <button type="button" data-k="ok">Ответить по делу <span class="chip c-ok">польза</span></button>
+        <button type="button" data-k="fun">Пошутить и помочь <span class="chip c-fun">юмор</span></button>
+        <button type="button" data-k="law">Черновик юристу <span class="chip c-law">сверка</span></button>
+        <button type="button" data-k="neg">Спокойно ответить на выпад <span class="chip c-neg">негатив</span></button>
+        <button type="button" data-k="no">Промолчать <span class="chip c-no">тишина</span></button>
+      </div>
+      <div class="verdict" id="tVerdict" aria-live="polite"></div>
+      <p class="why" id="tWhy"></p>
+      <div class="t-nav">
+        <div class="dots" id="tDots"></div>
+        <span class="score" id="tScore"></span>
+        <button class="ghost" id="tNext" type="button">Следующая →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="mon-h">
+  <div class="head">
+    <div class="label">3 · Автоматизация мониторинга</div>
+    <h2 id="mon-h">AI находит ветки и готовит черновики, человек решает</h2>
+    <p class="muted">Собирать систему руками не обязательно: я описываю критерии, правила и логику, а коллеги помогают с реализацией. Нажмите на блок схемы, чтобы увидеть, что в нём происходит.</p>
+  </div>
+  <figure>
+    <div class="dia">
+      <svg viewBox="0 0 900 330" role="img" aria-label="Схема мониторинга: сообщения из чатов собираются, модель размечает тему и уместность, ветки распределяются на четыре решения; сложные правовые ответы проходят проверку юристом; опубликованные ответы размечены UTM и ведут к MQL; результаты возвращаются в правила.">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0D0628"/></marker>
+          <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8C26EA"/></marker>
+        </defs>
+        <g font-family="Open Sans, system-ui, sans-serif" font-size="13" fill="#0D0628">
+          <line class="flow" x1="130" y1="142" x2="166" y2="142" stroke="#0D0628" marker-end="url(#ar)"/>
+          <text x="148" y="133" text-anchor="middle" font-size="10" fill="#68647A">новые</text>
+          <line class="flow" x1="290" y1="142" x2="326" y2="142" stroke="#0D0628" marker-end="url(#ar)"/>
+          <path class="flow" d="M470 130 C495 130 495 38 516 38" fill="none" stroke="#0D0628" marker-end="url(#ar)"/>
+          <path class="flow" d="M470 138 C495 138 495 96 516 96" fill="none" stroke="#0D0628" marker-end="url(#ar)"/>
+          <path class="flow" d="M470 150 C495 150 495 184 516 184" fill="none" stroke="#0D0628" marker-end="url(#ar)"/>
+          <path d="M470 160 C495 160 495 268 516 268" fill="none" stroke="#0D0628" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+          <text x="660" y="273" font-size="11" fill="#68647A">в отчёт, без ответа</text>
+          <line class="flow" x1="650" y1="184" x2="686" y2="184" stroke="#8C26EA" marker-end="url(#arA)"/>
+          <text x="668" y="176" text-anchor="middle" font-size="10" fill="#68647A">черновик</text>
+          <path class="flow" d="M650 38 C730 38 760 90 796 92" fill="none" stroke="#0D0628" marker-end="url(#ar)"/>
+          <path class="flow" d="M650 96 C720 96 760 104 796 104" fill="none" stroke="#0D0628" marker-end="url(#ar)"/>
+          <path class="flow" d="M778 184 C800 184 820 160 840 138" fill="none" stroke="#8C26EA" marker-end="url(#arA)"/>
+          <text x="806" y="198" font-size="10" fill="#68647A">одобрено</text>
+          <line class="flow" x1="845" y1="70" x2="845" y2="40" stroke="#8C26EA" marker-end="url(#arA)"/>
+          <path d="M845 134 L845 316 L400 316 L400 188" fill="none" stroke="#0D0628" stroke-opacity=".5" stroke-dasharray="2 4" marker-end="url(#ar)"/>
+          <text x="620" y="310" text-anchor="middle" font-size="11" fill="#68647A">раз в неделю: что сработало → правка правил разметки</text>
+
+          <g class="node" tabindex="0" role="button" data-n="src"><rect x="10" y="110" width="120" height="64" rx="12" fill="#F5F5F5" stroke="#0D0628" stroke-opacity=".3"/><text x="70" y="137" text-anchor="middle" font-weight="700">Чаты, паблики</text><text x="70" y="156" text-anchor="middle" font-size="11" fill="#68647A">TG · VK · медиа</text></g>
+          <g class="node" tabindex="0" role="button" data-n="col"><rect x="170" y="110" width="120" height="64" rx="12" fill="#F5F5F5" stroke="#0D0628" stroke-opacity=".3"/><text x="230" y="137" text-anchor="middle" font-weight="700">Сбор</text><text x="230" y="156" text-anchor="middle" font-size="11" fill="#68647A">ключи + темы</text></g>
+          <g class="node" tabindex="0" role="button" data-n="llm"><rect x="330" y="100" width="140" height="84" rx="12" fill="#F1E6FD" stroke="#8C26EA"/><text x="400" y="128" text-anchor="middle" font-weight="700" fill="#8C26EA">LLM-разметка</text><text x="400" y="147" text-anchor="middle" font-size="11" fill="#68647A">тема · тон · риск</text><text x="400" y="163" text-anchor="middle" font-size="11" fill="#68647A">уместно ли бренду</text></g>
+          <g font-size="12">
+            <g class="node" tabindex="0" role="button" data-n="ok"><rect x="520" y="20" width="130" height="36" rx="18" fill="#E1F4E9" stroke="#1D7A4C" stroke-opacity=".4"/><text x="585" y="43" text-anchor="middle" fill="#1D7A4C" font-weight="700">польза</text></g>
+            <g class="node" tabindex="0" role="button" data-n="fun"><rect x="520" y="78" width="130" height="36" rx="18" fill="#FBF4C2" stroke="#8A5A00" stroke-opacity=".4"/><text x="585" y="101" text-anchor="middle" fill="#8A5A00" font-weight="700">юмор</text></g>
+            <g class="node" tabindex="0" role="button" data-n="law"><rect x="520" y="166" width="130" height="36" rx="18" fill="#F1E6FD" stroke="#8C26EA" stroke-opacity=".5"/><text x="585" y="189" text-anchor="middle" fill="#8C26EA" font-weight="700">сверка с юристом</text></g>
+            <g class="node" tabindex="0" role="button" data-n="no"><rect x="520" y="250" width="130" height="36" rx="18" fill="#ECEBF0" stroke="#68647A" stroke-opacity=".4"/><text x="585" y="273" text-anchor="middle" fill="#68647A" font-weight="700">промолчать</text></g>
+          </g>
+          <g class="node" tabindex="0" role="button" data-n="lawyer"><rect x="690" y="166" width="88" height="36" rx="12" fill="#F5F5F5" stroke="#8C26EA"/><text x="734" y="189" text-anchor="middle" font-weight="700" font-size="12">юрист</text></g>
+          <g class="node" tabindex="0" role="button" data-n="pub"><rect x="800" y="70" width="90" height="64" rx="12" fill="#F5F5F5" stroke="#0D0628" stroke-opacity=".3"/><text x="845" y="97" text-anchor="middle" font-weight="700">Ответ</text><text x="845" y="116" text-anchor="middle" font-size="11" fill="#68647A">+ UTM</text></g>
+          <g class="node" tabindex="0" role="button" data-n="mql"><rect x="805" y="14" width="80" height="26" rx="13" fill="#EEFF2D"/><text x="845" y="32" text-anchor="middle" font-size="12" font-weight="800">MQL</text></g>
+        </g>
+      </svg>
+    </div>
+    <div class="detail" id="detail" aria-live="polite"><b>LLM-разметка</b><p>Модель читает ветку и ставит метки: тема (аренда, ЖКХ, труд…), тон, риск для бренда и уместно ли вообще отвечать. Она не публикует, а только сортирует и пишет черновик по правилам.</p></div>
+    <figcaption class="muted" style="font-size:.88rem">Модель только сортирует и пишет черновики. Решение «заходить или нет» и сложные правовые ответы остаются за людьми, а результаты каждую неделю уточняют правила разметки.</figcaption>
+  </figure>
+  <ul class="rules">
+    <li><b>Правило уместности</b><span class="muted">Бренд отвечает, только если вопрос задан прямо и ответ полезен без перехода по ссылке.</span></li>
+    <li><b>Правило ссылки на норму</b><span class="muted">Каждый правовой ответ содержит статью закона. Без статьи ответ уходит на проверку.</span></li>
+    <li><b>Правило частоты</b><span class="muted">Не больше одного ответа бренда в ветке и лимит в неделю на каждую площадку, чтобы не стать спамом.</span></li>
+    <li><b>Правило негатива</b><span class="muted">На провокацию бренд отвечает один раз, спокойно и по фактам. Потом переводит разговор в личку или поддержку.</span></li>
+  </ul>
+</section>
+
+<section aria-labelledby="fun-h">
+  <div class="head">
+    <div class="label">4 · Как считать результат</div>
+    <h2 id="fun-h">Реакция ≠ интерес ≠ <mark>лид</mark></h2>
+    <p class="muted">Покрутите ползунки: это калькулятор воронки, а не прогноз. Проценты по умолчанию условные, реальные появятся после первого месяца замеров.</p>
+  </div>
+  <div class="calc">
+    <div class="ctrls">
+      <div class="ctrl"><label for="cReach">Охват целевой аудитории в месяц <output id="oReach"></output></label><input type="range" id="cReach" min="10000" max="1000000" step="10000" value="300000"></div>
+      <div class="ctrl"><label for="cEng">Доля содержательных взаимодействий <output id="oEng"></output></label><input type="range" id="cEng" min="0.2" max="5" step="0.1" value="1.5"></div>
+      <div class="ctrl"><label for="cInt">Из них переходят по UTM <output id="oInt"></output></label><input type="range" id="cInt" min="2" max="60" step="1" value="25"></div>
+      <div class="ctrl"><label for="cMql">Из перешедших становятся MQL <output id="oMql"></output></label><input type="range" id="cMql" min="1" max="40" step="1" value="12"></div>
+    </div>
+    <div class="funnel">
+      <div class="fstep"><div class="top"><b>Охват ЦА</b><span class="muted">только площадки из карты</span></div><div class="track"><div class="fill" id="f1"></div></div></div>
+      <div class="fstep"><div class="top"><b>Взаимодействия</b><span class="muted">ответы и вопросы, не лайки</span></div><div class="track"><div class="fill" id="f2"></div></div></div>
+      <div class="fstep"><div class="top"><b>Интерес</b><span class="muted">переходы по UTM в бот и продукт</span></div><div class="track"><div class="fill" id="f3"></div></div></div>
+      <div class="fstep"><div class="top"><b>MQL</b><span class="muted">регистрация + первый запрос</span></div><div class="track"><div class="fill" id="f4"></div></div></div>
+    </div>
+  </div>
+  <div class="note">
+    <div class="label">Опыт</div>
+    <p>В Colife 30,1 млн органических просмотров дали 629 целевых лидов. Эта пропасть научила меня смотреть не на просмотры, а на то, какие площадки и форматы приводят людей до заявки. Работающее масштабировал, остальное закрывал. Здесь сделаю так же.</p>
+  </div>
+</section>
+
+<section aria-labelledby="plan-h">
+  <div class="head">
+    <div class="label">5 · Первые 90 дней</div>
+    <h2 id="plan-h">С чего начну</h2>
+  </div>
+  <div class="plan">
+    <div class="phase">
+      <div class="label">Дни 1–30</div>
+      <h3>Разведка и правила</h3>
+      <ul>
+        <li>Карта из 30–50 реальных площадок: размер, правила, тон</li>
+        <li>Регламент тона и согласования с юристами</li>
+        <li>Ручной мониторинг 15–20 площадок, первые ответы</li>
+        <li>UTM-схема и критерий MQL вместе с продуктом</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="label">Дни 31–60</div>
+      <h3>Система</h3>
+      <ul>
+        <li>ТЗ на автоматизацию мониторинга и разметки</li>
+        <li>Рубрики на своих площадках из лучших ответов</li>
+        <li>Задачи контенту и дизайну по частым вопросам аудитории</li>
+        <li>Первый отчёт: какие площадки приводят интерес</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="label">Дни 61–90</div>
+      <h3>Масштаб</h3>
+      <ul>
+        <li>Усилить 3–5 лучших площадок, закрыть слабые</li>
+        <li>Отчёт по MQL и стоимости внимания на каждой площадке</li>
+        <li>Гипотеза собственного сообщества с нуля, если данные её поддержат</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2>Обсудим?</h2>
+  <p>Готов показать полную карту площадок с реальными чатами и пройти тестовое задание.</p>
+  <div class="row">
+    <button class="copy" data-copy="@artyom_nekrasov" type="button">tg: @artyom_nekrasov <small>копировать</small></button>
+    <button class="copy" data-copy="artem.nekras@mail.ru" type="button">artem.nekras@mail.ru <small>копировать</small></button>
+  </div>
+  <p class="fine">Переписки на странице — придуманные примеры тона кандидата, а не публикации ПравоТех.</p>
+</footer>
+
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+
+  var toast=$('#toast'), tt;
+  function say(t){toast.textContent=t;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},1800)}
+  $$('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+    var v=b.getAttribute('data-copy');
+    try{navigator.clipboard.writeText(v).then(function(){say('Скопировано: '+v)},function(){fallback(b,v)})}catch(e){fallback(b,v)}
+  })});
+  function fallback(b,v){try{var r=document.createRange();r.selectNodeContents(b);var s=getSelection();s.removeAllRanges();s.addRange(r)}catch(e){}say('Скопируйте вручную: '+v)}
+
+  var hero=$('#hero'), glow=$('#glow');
+  if(!reduce && hero){hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();glow.style.transform='translate('+((e.clientX-r.left)*.35)+'px,'+((e.clientY-r.top)*.3)+'px)'})}
+
+  var feed=$('#feed'), typing=$('#typing'), msgs=$$('.m',feed), timers=[];
+  function clear(){timers.forEach(clearTimeout);timers=[]}
+  function play(){
+    clear();
+    msgs.forEach(function(m){m.classList.add('hide')});
+    var t=500;
+    msgs.forEach(function(m,i){
+      var brand=m.classList.contains('brand');
+      var pause=brand?1700:900;
+      timers.push(setTimeout(function(){typing.className='typing on'+(brand?'':' left');feed.insertBefore(typing,m)},t));
+      t+=pause;
+      timers.push(setTimeout(function(){typing.className='typing';m.classList.remove('hide')},t));
+      t+=450;
+    });
+  }
+  if(!reduce){play()}
+  $('#replay').addEventListener('click',function(){if(!reduce)play()});
+
+  var counted=false;
+  function countUp(){
+    if(counted||reduce)return;counted=true;
+    $$('[data-count]').forEach(function(el){
+      var end=+el.getAttribute('data-count'), suf=el.getAttribute('data-suf')||'', t0=null;
+      function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1200),e=1-Math.pow(1-p,3);el.textContent=Math.round(end*e)+suf;if(p<1)requestAnimationFrame(step)}
+      requestAnimationFrame(step);
+    });
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp();io.disconnect()}})},{threshold:.5});
+    io.observe($('.proof'));
+  }
+
+  $$('.filters button').forEach(function(b){b.addEventListener('click',function(){
+    var f=b.getAttribute('data-f');
+    $$('.filters button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    $$('#map tr').forEach(function(tr){tr.classList.toggle('dim',f!=='all'&&tr.getAttribute('data-t').split(' ').indexOf(f)<0)});
+  })});
+
+  var cases=[
+    {where:'Чат «Кадры и HR»',ans:'ok',msgs:[
+      ['Ирина','#E0679A','Народ, зп задерживают уже третью неделю 🫠 Директор говорит «ждите, деньги будут». Увольняться?'],
+      ['Сергей','#4CA27A','увольняйся, это не лечится'],
+      ['Ирина','#E0679A','жалко, коллектив хороший(']],
+     reply:'Ирина, до увольнения есть ход посильнее. При задержке больше 15 дней можно письменно уведомить работодателя и не выходить на работу до выплаты <span class="cite">ст. 142 ТК</span>. За каждый день просрочки положена компенсация, не меньше 1/150 ключевой ставки <span class="cite">ст. 236 ТК</span>. Уведомление лучше вручить под подпись 📝',
+     why:'Прямой вопрос с точным ответом в законе. Совет «увольняйся» тут самый слабый, а бренд показывает вариант, о котором человек не знал. Никакой рекламы, только польза.'},
+    {where:'Паблик «Наш дом · ЖКХ»',ans:'fun',msgs:[
+      ['Дмитрий','#5B8DEF','Сосед сверху ТРЕТИЙ раз за год устроил у меня аквапарк 🌊 Потолок уже как карта мира. Как с него взыскать?'],
+      ['Анна','#E3A43B','поставь ему тазик под дверь 😂'],
+      ['Дмитрий','#5B8DEF','тазик уже не помогает, мне нужен реванш']],
+     reply:'Реванш оформляем документально 🙂 Вызовите УК и составьте акт о заливе, всё сфотографируйте, закажите оценку ущерба и отправьте соседу претензию. Ущерб возмещает тот, кто его причинил <span class="cite">ст. 1064 ГК</span>. Карту мира на потолке оплатит её автор 🗺️',
+     why:'Тред уже шутливый, и сухой ответ в нём потеряется. Шутка заходит в тон, но вся польза на месте: юмор без ответа выглядел бы как кринж бренда.'},
+    {where:'Чат «ИП и самозанятые»',ans:'law',msgs:[
+      ['Алексей','#4CA27A','Долг ~400к по кредиткам, бизнес закрыл, приставы ничего не нашли. Можно обанкротиться через МФЦ, без суда?'],
+      ['Ольга','#E0679A','можно вроде, но там куча условий'],
+      ['Алексей','#4CA27A','вот именно, а какие?']],
+     reply:'<i>Черновик на проверке у юриста:</i> внесудебное банкротство через МФЦ возможно при долге от 25 тыс. до 1 млн ₽, если выполнены условия — например, исполнительное производство окончено из-за отсутствия имущества…',
+     draft:true,
+     why:'Ответ зависит от деталей, а ошибка дорого стоит человеку. AI готовит черновик, юрист проверяет, публикуем только после его правок. Скорость тут важна меньше точности.'},
+    {where:'Паблик про AI и технологии',ans:'neg',msgs:[
+      ['Гость','#68647A','Ваш AI-юрист — очередная нейронка, насоветует и сядешь 🤡'],
+      ['Гость 2','#E3A43B','плюсую, юристу хоть претензию можно предъявить']],
+     reply:'Скепсис понимаем 🙂 Поэтому каждый ответ идёт со ссылкой на статью, которую можно проверить самому, а в сложных случаях мы прямо советуем живого юриста. Если есть пример, где ответ был неточным, пришлите в личку — разберём.',
+     why:'Молчание тут читается как согласие, а спор — как слабость. Один спокойный ответ с фактами, без оправданий, и перевод в личку. Дальше в ветке бренд не спорит.'},
+    {where:'Чат ЖК «Северный»',ans:'no',msgs:[
+      ['Соседи','#68647A','Светлая память… Вчера во дворе сбили женщину, водитель уехал.'],
+      ['Наталья','#E0679A','ужас. кто-нибудь знает, будет суд?'],
+      ['Игорь','#5B8DEF','полиция уже работает, камеры изымали']],
+     reply:'',
+     why:'Правовой вопрос формально есть, но любое появление бренда в такой ветке выглядит как реклама на чужом горе. Чувство такта важнее охвата. Ветка уходит в отчёт без ответа.'}
+  ];
+  var ci=0, score=0, answered=[];
+  var labels={ok:'польза',fun:'юмор',law:'сверка с юристом',neg:'ответ на негатив',no:'промолчать'};
+  var tChat=$('#tChat'), tOpts=$('#tOpts'), tV=$('#tVerdict'), tW=$('#tWhy'), tS=$('#tStep'), tD=$('#tDots'), tSc=$('#tScore'), tN=$('#tNext');
+  cases.forEach(function(){tD.appendChild(document.createElement('i'))});
+  function bubble(name,color,text,brand){
+    var d=document.createElement('div');d.className='m'+(brand?' brand':'');
+    d.innerHTML='<div class="ava" style="background:'+(brand?'var(--accent)':color)+'">'+name[0]+'</div><div class="b"><span class="n" style="color:'+(brand?'var(--accent)':color)+'">'+name+'</span>'+text+'</div>';
+    return d;
+  }
+  function render(){
+    var c=cases[ci];
+    tChat.innerHTML='<div class="t-meta"><span class="label">'+c.where+'</span><span class="chip c-no">пример</span></div>';
+    c.msgs.forEach(function(m,i){var b=bubble(m[0],m[1],m[2]);if(!reduce){b.style.animation='rise .45s var(--ease) '+(i*.18)+'s both'}tChat.appendChild(b)});
+    tS.textContent='Ветка '+(ci+1)+' из '+cases.length;
+    $$('button',tOpts).forEach(function(b){b.disabled=false;b.className=''});
+    tV.textContent='';tW.textContent='';
+    $$('i',tD).forEach(function(d,i){d.className=i===ci?'on':''});
+    tN.textContent=ci===cases.length-1?'Сначала ↺':'Следующая →';
+    tSc.textContent=answered.length?('совпало '+score+' из '+answered.length):'';
+  }
+  $$('button',tOpts).forEach(function(b){b.addEventListener('click',function(){
+    var c=cases[ci], k=b.getAttribute('data-k'), ok=k===c.ans;
+    $$('button',tOpts).forEach(function(x){x.disabled=true;if(x.getAttribute('data-k')===c.ans)x.classList.add(ok?'right':'mine')});
+    if(!ok)b.classList.add('wrong');
+    if(answered.indexOf(ci)<0){answered.push(ci);if(ok)score++}
+    tV.textContent=ok?'Совпало ✓':'Я бы выбрал: '+labels[c.ans];
+    tW.textContent=c.why;
+    tSc.textContent='совпало '+score+' из '+answered.length;
+    if(c.reply){
+      var ty=document.createElement('div');ty.className='typing on';ty.innerHTML='<i></i><i></i><i></i>';tChat.appendChild(ty);
+      setTimeout(function(){ty.remove();var r=bubble(c.draft?'Право.Консультант · черновик':'Право.Консультант','',c.reply,true);if(!reduce)r.style.animation='rise .45s var(--ease) both';tChat.appendChild(r)},reduce?0:1100);
+    }else{
+      var s=document.createElement('div');s.className='m brand';s.innerHTML='<div class="b" style="background:var(--mute-soft);color:var(--muted)">— бренд не заходит —</div>';tChat.appendChild(s);
+    }
+  })});
+  tN.addEventListener('click',function(){if(ci===cases.length-1){ci=0;score=0;answered=[]}else{ci++}render()});
+  render();
+
+  var info={
+    src:['Чаты и паблики','Площадки из карты: Telegram-чаты, VK-паблики, комментарии в медиа. Список живой: раз в месяц добавляем новые и убираем те, где бренд не нужен.'],
+    col:['Сбор','Забираем новые сообщения по ключевым словам и темам: «залог», «затопили», «задерживают зарплату». Через no-code: n8n или Make, бот-наблюдатель в Telegram.'],
+    llm:['LLM-разметка','Модель читает ветку и ставит метки: тема (аренда, ЖКХ, труд…), тон, риск для бренда и уместно ли вообще отвечать. Она не публикует, а только сортирует и пишет черновик по правилам.'],
+    ok:['Польза','Прямой вопрос и точный ответ в законе. Черновик со ссылкой на статью, комьюнити-менеджер правит тон под площадку и публикует.'],
+    fun:['Юмор','Тред уже шутливый. Шутка в тон плюс полный полезный ответ. Без пользы шутку не публикуем.'],
+    law:['Сверка с юристом','Сложный или рискованный вопрос: банкротство, семья, уголовка. Черновик уходит юристу, публикация только после его правок.'],
+    no:['Промолчать','Горе, политика, конфликт соседей без правового вопроса. Бренд не заходит, ветка попадает в отчёт для понимания площадки.'],
+    lawyer:['Юрист','Проверяет черновик в рамках договорённого SLA, например в течение рабочего дня. Его правки становятся новыми правилами для модели.'],
+    pub:['Ответ + UTM','Каждая ссылка в бот или продукт размечена: площадка, ветка, тип реакции. Так видно, какой чат и какой тон приводят людей.'],
+    mql:['MQL','Регистрация и первый запрос в Право.Консультанте. Критерий согласую с продуктом. Именно по нему решаем, какие площадки масштабировать.']
+  };
+  var detail=$('#detail');
+  $$('.node').forEach(function(n){
+    function pick(){$$('.node').forEach(function(x){x.classList.remove('sel')});n.classList.add('sel');var d=info[n.getAttribute('data-n')];detail.innerHTML='<b>'+d[0]+'</b><p>'+d[1]+'</p>'}
+    n.addEventListener('click',pick);
+    n.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}});
+  });
+  var first=$('.node[data-n="llm"]'); if(first)first.classList.add('sel');
+
+  var fmt=function(n){return Math.round(n).toLocaleString('ru-RU')};
+  function calc(){
+    var R=+$('#cReach').value, E=+$('#cEng').value/100, I=+$('#cInt').value/100, M=+$('#cMql').value/100;
+    var v=[R,R*E,R*E*I,R*E*I*M];
+    $('#oReach').textContent=fmt(R);$('#oEng').textContent=(E*100).toFixed(1)+'%';$('#oInt').textContent=Math.round(I*100)+'%';$('#oMql').textContent=Math.round(M*100)+'%';
+    var max=Math.log10(1000000);
+    v.forEach(function(x,i){var el=$('#f'+(i+1));el.textContent=fmt(x);el.style.width=Math.max(8,Math.log10(Math.max(x,1))/max*100)+'%'});
+  }
+  $$('.ctrls input').forEach(function(i){i.addEventListener('input',calc)});
+  calc();
+})();
+</script>
+</body>
+</html>
