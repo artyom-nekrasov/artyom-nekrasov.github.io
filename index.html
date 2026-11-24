@@ -458,14 +458,15 @@ footer .copy small{color:var(--lime)}
   function play(){
     clear();
     msgs.forEach(function(m){m.classList.add('hide')});
-    var t=500;
+    var t=350;
     msgs.forEach(function(m,i){
+      if(i===0){m.classList.remove('hide');return}
       var brand=m.classList.contains('brand');
-      var pause=brand?1700:900;
+      var pause=brand?1000:450;
       timers.push(setTimeout(function(){typing.className='typing on'+(brand?'':' left');feed.insertBefore(typing,m)},t));
       t+=pause;
       timers.push(setTimeout(function(){typing.className='typing';m.classList.remove('hide')},t));
-      t+=450;
+      t+=250;
     });
   }
   if(!reduce){play()}
