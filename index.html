@@ -56,7 +56,7 @@ section{display:grid;gap:24px}
 .chat-top b{font-size:.92rem;display:block;line-height:1.2}
 .chat-top span{font-size:.75rem;color:var(--muted)}
 .replay{margin-left:auto;background:var(--accent-soft);color:var(--accent);border:0;border-radius:10px;padding:7px 10px;font:600 .75rem/1 var(--f-body)}
-.feed{padding:14px;display:flex;flex-direction:column;gap:8px;min-height:420px;background:linear-gradient(180deg,var(--card),#FBF9FE)}
+.feed{position:relative;padding:14px;display:flex;flex-direction:column;gap:8px;min-height:420px;background:linear-gradient(180deg,var(--card),#FBF9FE)}
 .m{display:flex;gap:8px;align-items:flex-end;max-width:88%;transition:opacity .35s var(--ease),transform .35s var(--ease)}
 .m .ava{width:28px;height:28px;font-size:.7rem}
 .m .b{background:var(--bubble);border-radius:14px 14px 14px 4px;padding:7px 11px;font-size:.88rem;line-height:1.45}
@@ -69,7 +69,7 @@ section{display:grid;gap:24px}
 .m ol{margin:4px 0;padding-left:18px}
 .m.hide{opacity:0;transform:translateY(8px) scale(.98)}
 .typing{align-self:flex-end;display:none;gap:4px;padding:10px 12px;background:var(--accent-soft);border-radius:14px 14px 4px 14px}
-.typing.on{display:inline-flex}
+.typing.on{display:inline-flex}.feed .typing{position:absolute;right:14px;z-index:1}.feed .typing.left{left:50px;right:auto}
 .typing.left{align-self:flex-start;background:var(--bubble);border-radius:14px 14px 14px 4px}
 .typing i{width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.4;animation:dot 1s infinite}
 .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
@@ -173,7 +173,7 @@ footer .copy small{color:var(--lime)}
   .intro>*:nth-child(2){animation-delay:.08s}.intro>*:nth-child(3){animation-delay:.16s}.intro>*:nth-child(4){animation-delay:.24s}.intro>*:nth-child(5){animation-delay:.32s}
   .chat{animation:rise .8s var(--ease) .15s both}
   @keyframes rise{from{opacity:0;transform:translateY(14px)}}
-  h1 .par{animation:wob 3.2s ease-in-out 1.2s infinite}
+  h1 .par{animation:none}
   @keyframes wob{0%,100%{transform:none}50%{transform:translateY(-3px)}}
 }
 @media (prefers-reduced-motion:reduce){
@@ -463,7 +463,7 @@ footer .copy small{color:var(--lime)}
       if(i===0){m.classList.remove('hide');return}
       var brand=m.classList.contains('brand');
       var pause=brand?1000:450;
-      timers.push(setTimeout(function(){typing.className='typing on'+(brand?'':' left');feed.insertBefore(typing,m)},t));
+      timers.push(setTimeout(function(){typing.className='typing on'+(brand?'':' left');typing.style.top=m.offsetTop+'px'},t));
       t+=pause;
       timers.push(setTimeout(function(){typing.className='typing';m.classList.remove('hide')},t));
       t+=250;
